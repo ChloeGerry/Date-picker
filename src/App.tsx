@@ -1,9 +1,7 @@
+import DatePicker from "./components/organisms/DatePicker";
+
 function App() {
-  return (
-    <>
-      <div>coucou</div>
-    </>
-  );
+  return <DatePicker />;
 }
 
 export default App;
