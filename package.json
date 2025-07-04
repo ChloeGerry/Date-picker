@@ -1,9 +1,7 @@
 {
   "name": "tailwind-date-picker",
   "private": false,
-  "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
