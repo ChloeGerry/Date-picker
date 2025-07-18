@@ -8,6 +8,8 @@ import { KEYBOARD_NAVIGATION } from "@/utils/navigation";
 import { getUpdatedCalendar, getUpdatedCalendarType } from "@/utils/Calendar/getUpdatedCalendar";
 import { returnToToday } from "@/utils/Calendar/returnToToday";
 import { NOT_MATCHING_DATE } from "@/utils/constants";
+import downArrow from "@/assets/down-arrow.png";
+import home from "@/assets/home.png";
 
 type CalendarProps = {
   calendarRef: React.RefObject<HTMLDivElement | null>;
@@ -172,7 +174,7 @@ const Calendar = ({
         <div className="flex items-center gap-6">
           <div className="border-[1px] border-gray-200 rounded-md p-1">
             <img
-              src="../src/assets/down-arrow.png"
+              src={downArrow}
               className="w-4 h-4 cursor-pointer transition rotate-90"
               onClick={() => getPreviousOrLastMonth(true)}
               onKeyDown={(event) => handleKeyboardPreviousMonth(event)}
@@ -180,7 +182,7 @@ const Calendar = ({
             />
           </div>
           <img
-            src="../src/assets/home.png"
+            src={home}
             className="w-4 h-4 cursor-pointer"
             onClick={() => {
               const params = {
@@ -204,7 +206,7 @@ const Calendar = ({
         </div>
         <div className="border-[1px] border-gray-200 rounded-md p-1">
           <img
-            src="../src/assets/down-arrow.png"
+            src={downArrow}
             className="w-4 h-4 cursor-pointer transition -rotate-90 text-gray-900"
             onClick={() => getPreviousOrLastMonth(false)}
             onKeyDown={(event) => handleKeyboardNextMonth(event)}

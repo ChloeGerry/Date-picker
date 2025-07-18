@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { CalendarType, getCalendar } from "@/utils/Calendar/getCalendar";
 import { KEYBOARD_NAVIGATION } from "@/utils/navigation";
+import downArrow from "@/assets/down-arrow.png";
 
 type DropdownProps = {
   dropdownProps: {
@@ -73,7 +74,7 @@ const Dropdown = ({ dropdownProps }: DropdownProps) => {
       <div className="flex items-center gap-2 w-fit rounded-md">
         <span className="text-gray-900">{selectedOption}</span>
         <img
-          src="../src/assets/down-arrow.png"
+          src={downArrow}
           className={twMerge(
             "w-4 h-4 cursor-pointer text-gray-900",
             isOpen && "transition rotate-180"
