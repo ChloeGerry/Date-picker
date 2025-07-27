@@ -1,17 +1,39 @@
 # Date Picker
 
-Versions utilisées :
+Versions used :
 
     node : 22.12.0
     yarn : 1.22.21
+    tailwind : 4.1.11
 
-Pour installer les dépendances :
+Installation :
 
-    yarn ou yarn install
+    npm i tailwind-date-picker
 
-Pour lancer le projet en local :
+Notes :
+The component already contains a minimum date to 01/01/1950 and a maximum date to 12/31/2025
+The props containerClassName only allow you to customized your component container
 
-    yarn dev
+Classic utilisation :
 
-Ce package a été réalisé dans le cadre de ma formation de développeuse d'application. Il s'agit d'un composant qui permet de sélectionner une date dans un calendrier.
-L'axe principal de travail est de créer un package à intégrer dans la refonte d'un projet en jQuery vers React. Ce projet est réalisé avec Typescript et Tailwind.
+```
+    import { DatePicker } from "tailwind-date-picker";
+    import "tailwind-date-picker/tailwind-date-picker.css";
+
+    <main>
+        <h1>Random title</h1>
+        <DatePicker />
+    </main>
+```
+
+Personnalised utilisation :
+
+```
+    import { DatePicker } from "tailwind-date-picker";
+    import "tailwind-date-picker/tailwind-date-picker.css";
+
+    <main>
+        <h1>An other random title</h1>
+        <DatePicker minimumDate="02/25/1994" maximumDate="12/17/2025" containerClassName="p-8" />
+    </main>
+```
