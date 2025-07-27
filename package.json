@@ -3,9 +3,24 @@
   "private": false,
   "version": "0.1.0",
   "type": "module",
+  "main": "./dist/tailwind-date-picker.cjs.js",
+  "module": "./dist/tailwind-date-picker.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/tailwind-date-picker.es.js",
+      "require": "./dist/tailwind-date-picker.cjs.js"
+    },
+    "./tailwind-date-picker.css": "./dist/tailwind-date-picker.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && cp -r src/assets dist/assets",
     "lint": "eslint .",
     "preview": "vite preview"
   },
