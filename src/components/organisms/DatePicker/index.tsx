@@ -13,12 +13,14 @@ import { UNVALID_FORMAT_DATE } from "@/utils/constants";
 type DatePickerProps = {
   minimumDate?: string;
   maximumDate?: string;
+  id?: string;
   containerClassName?: string;
 };
 
 const DatePicker = ({
   minimumDate = "01/01/1950",
   maximumDate = "12/31/2025",
+  id,
   containerClassName,
 }: DatePickerProps) => {
   const initialMonth = dayjs().month();
@@ -143,18 +145,17 @@ const DatePicker = ({
 
   return (
     <div className={twMerge("flex flex-col", containerClassName)}>
-      <div>
-        <Input
-          ref={inputRef}
-          placeholder="MM/DD/YYYY"
-          onClick={() => handleInputClick()}
-          onChange={(event) => handleInputChange(event)}
-          value={choosenDate}
-          hasErrorMessage={errorMessage}
-          onKeyDown={(event) => handleKeyboardCalendarVisibility(event)}
-        />
-        {errorMessage && <p className="py-2 text-red-700">{errorMessage}</p>}
-      </div>
+      <Input
+        id={id}
+        ref={inputRef}
+        placeholder="MM/DD/YYYY"
+        onClick={() => handleInputClick()}
+        onChange={(event) => handleInputChange(event)}
+        value={choosenDate}
+        hasErrorMessage={errorMessage}
+        onKeyDown={(event) => handleKeyboardCalendarVisibility(event)}
+      />
+      {errorMessage && <p className="py-2 text-red-700">{errorMessage}</p>}
       {isCalendarVisible && <Calendar {...calendarProps} />}
     </div>
   );

@@ -2,6 +2,7 @@ import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler, Ref } from
 import { twMerge } from "tailwind-merge";
 
 type InputProps = {
+  id?: string;
   onClick: MouseEventHandler<HTMLInputElement>;
   onKeyDown: KeyboardEventHandler<HTMLInputElement>;
   onChange: ChangeEventHandler<HTMLInputElement>;
@@ -12,6 +13,7 @@ type InputProps = {
 };
 
 const Input = ({
+  id,
   onClick,
   onKeyDown,
   onChange,
@@ -22,12 +24,13 @@ const Input = ({
 }: InputProps) => {
   return (
     <input
+      id={id}
       onClick={onClick}
       onKeyDown={onKeyDown}
       ref={ref}
       placeholder={placeholder}
       className={twMerge(
-        "border max-w-52 border-[#C18845] focus:border-2 focus:border-[#F0BE86] placeholder-[#6A645A] focus:outline-none rounded-sm py-1 px-3 transition-all duration-200",
+        "border w-[250px] h-[42px] border-[#C18845] focus:border-2 focus:border-[#F0BE86] placeholder-[#6A645A] focus:outline-none rounded-sm py-1 px-3 transition-all duration-200",
         hasErrorMessage && "border-red-700 focus:border-red-700"
       )}
       value={value}
