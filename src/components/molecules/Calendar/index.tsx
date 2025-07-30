@@ -118,15 +118,27 @@ const Calendar = ({
 
   const handleChoosenDate = (day: number, isPreviousMonth: boolean, isNextMonth: boolean): void => {
     const choosenDay = day < 10 ? `0${day}` : day;
-    const choosenMonth = (isPreviousMonth && month - 1) || (isNextMonth && month + 1) || month;
+    let choosenMonth = month;
+    let updatedYear = year;
+
+    if (isPreviousMonth) {
+      choosenMonth = month === 0 ? 11 : month - 1 || month;
+      updatedYear = month === 0 ? year - 1 : year;
+    }
+
+    if (isNextMonth) {
+      choosenMonth = month === 11 ? 0 : month + 1 || month;
+      updatedYear = month === 11 ? year + 1 : year;
+    }
+
     const updatedMonth = choosenMonth + 1 < 10 ? `0${choosenMonth + 1}` : choosenMonth + 1;
-    const date = `${updatedMonth}/${choosenDay}/${year}`;
+    const date = `${updatedMonth}/${choosenDay}/${updatedYear}`;
 
     if (isPreviousMonth || isNextMonth) {
       const params: getUpdatedCalendarType = {
         month,
         onClickUpdateMonth,
-        year,
+        year: updatedYear,
         onClickUpdateYear,
         onClickUpdateCalendar,
         isPreviousMonth,
@@ -136,7 +148,7 @@ const Calendar = ({
     }
 
     onClickUpdateMonth(choosenMonth);
-    onClickUpdateYear(year);
+    onClickUpdateYear(updatedYear);
     onClickUpdateSelectedDay(day);
     onClickUpdateChoosenDate(date);
 
@@ -168,7 +180,7 @@ const Calendar = ({
   return (
     <div
       ref={calendarRef}
-      className="border-[1px] border-gray-200 rounded-md bg-white p-4 w-fit justify-self-center"
+      className="border-[1px] border-gray-200 rounded-md bg-white p-4 w-fit justify-self-center absolute top-[42px]"
     >
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-6">
