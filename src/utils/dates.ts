@@ -26,7 +26,7 @@ export const getAllYears = (): Array<number> => {
 
   const years = [];
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i <= 100; i++) {
     years.push(lastFutureYear - i);
   }
 

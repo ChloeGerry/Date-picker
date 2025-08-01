@@ -18,8 +18,8 @@ type DatePickerProps = {
 };
 
 const DatePicker = ({
-  minimumDate = "01/01/1950",
-  maximumDate = "12/31/2025",
+  minimumDate = "01/01/1951",
+  maximumDate = "12/31/2050",
   id,
   containerClassName,
 }: DatePickerProps) => {
