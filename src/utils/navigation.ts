@@ -5,4 +5,5 @@ export const KEYBOARD_NAVIGATION = {
   ARROW_RIGHT: "ArrowRight",
   ARROW_LEFT: "ArrowLeft",
   ENTER: "Enter",
+  ESCAPE: "Escape",
 };

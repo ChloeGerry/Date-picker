@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
 import Dropdown from "@/components/molecules/Dropdown";
@@ -26,8 +26,8 @@ type CalendarProps = {
   onClickUpdateSelectedDay: (day: number) => void;
   onClickUpdateCalendarVisibility: (isVisibile: boolean) => void;
   onClickUpdateErrorMessage: (message: string) => void;
-  minimumDate?: string;
-  maximumDate?: string;
+  minimumDate: string;
+  maximumDate: string;
 };
 
 const Calendar = ({
@@ -49,6 +49,7 @@ const Calendar = ({
   maximumDate,
 }: CalendarProps) => {
   const currentDate = dayjs().date();
+  const selectedOptionRef = useRef<HTMLParagraphElement | null>(null);
 
   const monthsDropdownProps = useMemo(
     () => ({
@@ -213,8 +214,8 @@ const Calendar = ({
           />
         </div>
         <div className="flex gap-2">
-          <Dropdown dropdownProps={monthsDropdownProps} />
-          <Dropdown dropdownProps={yearsDropdownProps} />
+          <Dropdown dropdownProps={monthsDropdownProps} ref={selectedOptionRef} />
+          <Dropdown dropdownProps={yearsDropdownProps} ref={selectedOptionRef} />
         </div>
         <div className="border-[1px] border-gray-200 rounded-md p-1">
           <img
@@ -235,11 +236,13 @@ const Calendar = ({
       </div>
       <div className="grid grid-cols-7 gap-4 border-[1px] border-gray-200 rounded-md p-2">
         {calendar?.map(({ day, isPreviousMonth, isNextMonth }, index) => {
-          const isCurrentDate =
-            selectedDay && !isPreviousMonth && !isNextMonth
+          let isCurrentDate;
+
+          if (!isPreviousMonth && !isNextMonth) {
+            isCurrentDate = selectedDay
               ? calendar[index].day === selectedDay
               : calendar[index].day === currentDate;
-
+          }
           return (
             <p
               key={index}
