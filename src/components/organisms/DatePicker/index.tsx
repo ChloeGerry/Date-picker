@@ -15,6 +15,7 @@ type DatePickerProps = {
   maximumDate?: string;
   id?: string;
   containerClassName?: string;
+  calendarClassName?: string;
 };
 
 const DatePicker = ({
@@ -22,6 +23,7 @@ const DatePicker = ({
   maximumDate = "12/31/2050",
   id,
   containerClassName,
+  calendarClassName,
 }: DatePickerProps) => {
   const initialMonth = dayjs().month();
   const initialYear = dayjs().year();
@@ -141,6 +143,7 @@ const DatePicker = ({
     onClickUpdateErrorMessage,
     minimumDate,
     maximumDate,
+    calendarClassName,
   };
 
   return (

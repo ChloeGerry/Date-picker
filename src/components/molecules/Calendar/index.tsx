@@ -28,6 +28,7 @@ type CalendarProps = {
   onClickUpdateErrorMessage: (message: string) => void;
   minimumDate: string;
   maximumDate: string;
+  calendarClassName?: string;
 };
 
 const Calendar = ({
@@ -47,6 +48,7 @@ const Calendar = ({
   onClickUpdateErrorMessage,
   minimumDate,
   maximumDate,
+  calendarClassName,
 }: CalendarProps) => {
   const currentDate = dayjs().date();
   const selectedOptionRef = useRef<HTMLParagraphElement | null>(null);
@@ -181,7 +183,10 @@ const Calendar = ({
   return (
     <div
       ref={calendarRef}
-      className="border-[1px] border-gray-200 rounded-md bg-white p-4 w-fit justify-self-center absolute top-[42px]"
+      className={twMerge(
+        "border-[1px] border-gray-200 rounded-md bg-white p-4 w-fit justify-self-center absolute top-[42px]",
+        calendarClassName
+      )}
     >
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-6">
