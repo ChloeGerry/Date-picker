@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
 import Dropdown from "@/components/molecules/Dropdown";
@@ -52,6 +52,9 @@ const Calendar = ({
 }: CalendarProps) => {
   const currentDate = dayjs().date();
   const selectedOptionRef = useRef<HTMLParagraphElement | null>(null);
+  const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
+
+  const onClickOpenDropdownId = (id: string | null): void => setOpenDropdownId(id);
 
   const monthsDropdownProps = useMemo(
     () => ({
@@ -62,8 +65,11 @@ const Calendar = ({
       year,
       onClickUpdateYear,
       onClickUpdateCalendar,
+      id: "month",
+      onClickUpdateDropdownDisplay: onClickOpenDropdownId,
+      isDropdownOpen: openDropdownId,
     }),
-    [month, year, onClickUpdateCalendar]
+    [month, year, onClickUpdateCalendar, openDropdownId]
   );
 
   const yearsDropdownProps = useMemo(() => {
@@ -77,8 +83,11 @@ const Calendar = ({
       year,
       onClickUpdateYear,
       onClickUpdateCalendar,
+      id: "year",
+      onClickUpdateDropdownDisplay: onClickOpenDropdownId,
+      isDropdownOpen: openDropdownId,
     };
-  }, [month, year, onClickUpdateCalendar]);
+  }, [month, year, onClickUpdateCalendar, openDropdownId]);
 
   const getPreviousOrLastMonth = (isPreviousMonth: boolean): void => {
     const params: getUpdatedCalendarType = {

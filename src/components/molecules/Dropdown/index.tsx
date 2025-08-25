@@ -13,6 +13,9 @@ type DropdownProps = {
     year: number;
     onClickUpdateYear: (year: number) => void;
     onClickUpdateCalendar: (calendar: CalendarType[]) => void;
+    id: string;
+    onClickUpdateDropdownDisplay: (id: string | null) => void;
+    isDropdownOpen: string | null;
   };
   ref?: Ref<HTMLParagraphElement | null>;
 };
@@ -32,32 +35,35 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
       year,
       onClickUpdateYear,
       onClickUpdateCalendar,
+      id,
+      onClickUpdateDropdownDisplay,
+      isDropdownOpen,
     } = dropdownProps;
 
-    const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(highlightOption ?? options[0]);
+    const newValue = isDropdownOpen === id ? null : id;
 
     useEffect(() => {
       setSelectedOption(highlightOption ?? options[0]);
     }, [month, year]);
 
     useEffect(() => {
-      if (isOpen && selectedOptionRef && selectedOptionRef.current) {
+      if (isDropdownOpen && selectedOptionRef && selectedOptionRef.current) {
         selectedOptionRef.current.scrollIntoView({
           behavior: "smooth",
         });
       }
-    }, [isOpen]);
+    }, [isDropdownOpen]);
 
     const handleDropdownKeyboardOpeningAndClosing = (
       event: React.KeyboardEvent<HTMLImageElement | HTMLSpanElement>
     ): void => {
       if (event.key === KEYBOARD_NAVIGATION.ARROW_DOWN || event.key === KEYBOARD_NAVIGATION.ENTER) {
-        setIsOpen(true);
+        onClickUpdateDropdownDisplay(newValue);
       }
 
       if (event.key === KEYBOARD_NAVIGATION.ARROW_UP || event.key === KEYBOARD_NAVIGATION.ESCAPE) {
-        setIsOpen(false);
+        onClickUpdateDropdownDisplay(newValue);
       }
     };
 
@@ -79,14 +85,14 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
         : getCalendar(option, month);
       onClickUpdateCalendar(updatedCalendar);
       setSelectedOption(option);
-      setIsOpen(false);
+      onClickUpdateDropdownDisplay(newValue);
     };
 
     return (
       <div className="flex flex-col">
         <div className="flex items-center gap-2 w-fit rounded-md">
           <span
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => onClickUpdateDropdownDisplay(newValue)}
             onKeyDown={(event) => handleDropdownKeyboardOpeningAndClosing(event)}
             className="cursor-pointer text-gray-900"
           >
@@ -96,9 +102,9 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
             src={downArrow}
             className={twMerge(
               "w-4 h-4 cursor-pointer text-gray-900",
-              isOpen && "transition rotate-180"
+              isDropdownOpen === id && "transition rotate-180"
             )}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => onClickUpdateDropdownDisplay(newValue)}
             onKeyDown={(event) => handleDropdownKeyboardOpeningAndClosing(event)}
             tabIndex={0}
           />
@@ -106,11 +112,11 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
         <div
           className={twMerge(
             "absolute flex flex-col",
-            isOpen &&
+            isDropdownOpen === id &&
               "z-10 top-12 bg-white border-[1px] w-fit h-[306px] overflow-scroll px-4 py-2 rounded"
           )}
         >
-          {isOpen &&
+          {isDropdownOpen === id &&
             options.map((option, index) => (
               <span
                 className={twMerge(
