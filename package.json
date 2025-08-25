@@ -6,15 +6,18 @@
   "type": "module",
   "main": "./dist/tailwind-date-picker.cjs.js",
   "module": "./dist/tailwind-date-picker.es.js",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/tailwind-date-picker.es.js",
-      "require": "./dist/tailwind-date-picker.cjs.js"
+      "require": "./dist/tailwind-date-picker.cjs.js",
+      "types": "./types/index.d.ts"
     },
     "./tailwind-date-picker.css": "./dist/tailwind-date-picker.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "sideEffects": [
     "*.css"
