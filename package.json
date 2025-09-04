@@ -1,8 +1,8 @@
 {
   "name": "tailwind-date-picker",
   "private": false,
-  "version": "1.0.0",
   "license": "MIT",
+  "version": "0.1.1",
   "type": "module",
   "main": "./dist/tailwind-date-picker.cjs.js",
   "module": "./dist/tailwind-date-picker.es.js",
