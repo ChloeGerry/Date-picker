@@ -2,9 +2,11 @@
 
 Versions used :
 
-    node : 22.12.0
-    yarn : 1.22.21
-    tailwind : 4.1.11
+```shell
+node : 22.12.0
+yarn : 1.22.21
+tailwind : 4.1.11
+```
 
 Installation :
 
