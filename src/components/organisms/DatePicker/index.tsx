@@ -156,7 +156,7 @@ const DatePicker = ({
         onClick={() => handleInputClick()}
         onChange={(event) => handleInputChange(event)}
         value={choosenDate}
-        hasErrorMessage={errorMessage}
+        errorMessage={errorMessage}
         onKeyDown={(event) => handleKeyboardCalendarVisibility(event)}
         {...props}
       />
