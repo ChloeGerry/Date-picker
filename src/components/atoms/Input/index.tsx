@@ -9,7 +9,7 @@ type InputProps = {
   ref: Ref<HTMLInputElement | null>;
   placeholder: string;
   value: string;
-  hasErrorMessage: string;
+  errorMessage: string;
 };
 
 const Input = ({
@@ -20,7 +20,7 @@ const Input = ({
   ref,
   placeholder,
   value,
-  hasErrorMessage,
+  errorMessage: hasErrorMessage,
 }: InputProps) => {
   return (
     <input

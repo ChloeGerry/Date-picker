@@ -2,10 +2,22 @@
 
 Versions used :
 
-```shell
-node : 22.12.0
-yarn : 1.22.21
-tailwind : 4.1.11
+---
+
+## Versions used
+
+- **Node**: 22.12.0
+- **Yarn**: 1.22.21
+- **Tailwind**: 4.1.11
+
+---
+
+## Installation
+
+```bash
+npm install tailwind-date-picker
+# or
+yarn add tailwind-date-picker
 ```
 
 Installation :
