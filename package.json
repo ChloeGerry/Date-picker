@@ -1,8 +1,8 @@
 {
   "name": "tailwind-date-picker",
   "private": false,
+  "version": "0.1.2",
   "license": "MIT",
-  "version": "0.1.1",
   "type": "module",
   "main": "./dist/tailwind-date-picker.cjs.js",
   "module": "./dist/tailwind-date-picker.es.js",
@@ -39,7 +39,8 @@
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.1.11",
-    "ts-jest": "^29.4.1"
+    "ts-jest": "^29.4.1",
+    "jest": "^30.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

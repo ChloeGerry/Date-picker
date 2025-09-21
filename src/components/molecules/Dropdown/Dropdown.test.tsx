@@ -68,14 +68,14 @@ describe("Dropdown component", () => {
   });
 
   it("highlights selected option with bg-gray-200", () => {
-    const { getByText } = render(
+    const { getByRole } = render(
       <Dropdown
         dropdownProps={{ ...monthsDropdownProps, isDropdownOpen: "month-dropdown" }}
         ref={createRef()}
       />
     );
 
-    const selectedOption = getByText("February");
+    const selectedOption = getByRole("option", { name: "February" });
     expect(selectedOption).toHaveClass("bg-gray-200");
   });
 

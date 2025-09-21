@@ -118,6 +118,7 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
             isDropdownOpen === id &&
               "z-10 top-12 bg-white border-[1px] w-fit h-[306px] overflow-scroll px-4 py-2 rounded"
           )}
+          role="listbox"
         >
           {isDropdownOpen === id &&
             options.map((option, index) => (
@@ -131,6 +132,8 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
                 key={option}
                 onKeyDown={(event) => handleKeyboardOptionSelection(event, option, index)}
                 tabIndex={0}
+                role="option"
+                aria-selected={selectedOption === option}
               >
                 {option}
               </span>
