@@ -7,22 +7,17 @@ const config = {
     "^.+\\.(ts|tsx)$": [
       "ts-jest",
       {
-        // Dire à ts-jest d'utiliser tsconfig.json pour les paths
-        tsconfig: {
-          baseUrl: ".",
-          paths: {
-            "@/*": ["./src/*"],
-          },
-        },
+        tsconfig: "./tsconfig.app.json",
       },
     ],
   },
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "\\.(jpg|jpeg|png|gif|svg|webp|ico)$": "jest-transform-stub",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   moduleDirectories: ["node_modules", "<rootDir>/src"],
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
 };
 
 module.exports = config;
