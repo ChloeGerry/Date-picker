@@ -2,6 +2,7 @@
   "name": "tailwind-date-picker",
   "private": false,
   "version": "1.0.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -31,6 +32,6 @@
     "globals": "^15.15.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
-    "vite": "^6.2.0"
+    "vite": "^7.0.0"
   }
 }
