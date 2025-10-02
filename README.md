@@ -2,7 +2,7 @@
 
 Versions utilisées :
 
-    node : 20.11.0
+    node : 22.12.0
     yarn : 1.22.21
 
 Pour installer les dépendances :
