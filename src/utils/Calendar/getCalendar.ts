@@ -32,10 +32,11 @@ export const getCalendar = (year: number, month: number): CalendarType[] => {
 
   const calendar: CalendarType[] = [];
 
-  daysInPreviousCalendarToAdd !== 0 &&
+  if (daysInPreviousCalendarToAdd !== 0) {
     daysInPreviousCalendarToAdd.forEach((day) => {
       return calendar.push({ day: day, isPreviousMonth: true, isNextMonth: false });
     });
+  }
 
   for (let day = 1; day <= daysInCurrentMonth; day++) {
     calendar.push({ day: day, isPreviousMonth: false, isNextMonth: false });

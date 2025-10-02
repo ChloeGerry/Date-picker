@@ -22,9 +22,6 @@ type DropdownProps = {
 
 const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
   ({ dropdownProps }, ref) => {
-    if (!dropdownProps) {
-      return false;
-    }
     const selectedOptionRef = ref as RefObject<HTMLParagraphElement>;
 
     const {
@@ -45,7 +42,7 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
 
     useEffect(() => {
       setSelectedOption(highlightOption ?? options[0]);
-    }, [month, year]);
+    }, [month, year, highlightOption, options]);
 
     useEffect(() => {
       if (isDropdownOpen && selectedOptionRef && selectedOptionRef.current) {
@@ -53,7 +50,7 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
           behavior: "smooth",
         });
       }
-    }, [isDropdownOpen]);
+    }, [isDropdownOpen, selectedOptionRef]);
 
     const handleDropdownKeyboardOpeningAndClosing = (
       event: React.KeyboardEvent<HTMLImageElement | HTMLSpanElement>
@@ -79,7 +76,13 @@ const Dropdown = forwardRef<HTMLParagraphElement | null, DropdownProps>(
 
     const updateSelectedOption = (option: string | number, index: number) => {
       const isOptionAString = typeof option === "string";
-      isOptionAString ? onClickUpdateMonth(index) : onClickUpdateYear(option);
+
+      if (isOptionAString) {
+        onClickUpdateMonth(index);
+      } else {
+        onClickUpdateYear(option);
+      }
+
       const updatedCalendar = isOptionAString
         ? getCalendar(year, index)
         : getCalendar(option, month);

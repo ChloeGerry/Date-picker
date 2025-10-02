@@ -80,5 +80,7 @@ export const displayErrorIfDateIsntBetweenMinimumAndMaximum = ({
     formattedDate: datesParams.formattedDate,
   });
 
-  !dateValidity ? onClickUpdateErrorMessage(NOT_MATCHING_DATE) : onClickUpdateErrorMessage("");
+  return !dateValidity
+    ? onClickUpdateErrorMessage(NOT_MATCHING_DATE)
+    : onClickUpdateErrorMessage("");
 };

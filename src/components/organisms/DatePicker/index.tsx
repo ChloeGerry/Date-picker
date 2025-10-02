@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dayjs from "dayjs";
 import { twMerge } from "tailwind-merge";
 import Input from "@/components/atoms/Input";
@@ -40,11 +40,26 @@ const DatePicker = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
 
+  const handleClickOutside = useCallback((event: MouseEvent): void => {
+    if (!inputRef.current || !calendarRef.current) {
+      return;
+    }
+
+    const isFocusOutsideDatePicker =
+      !inputRef.current.contains(event.target as Node) &&
+      !calendarRef.current.contains(event.target as Node);
+
+    if (isFocusOutsideDatePicker) {
+      onClickUpdateErrorMessage("");
+      onClickUpdateCalendarVisibility(false);
+    }
+  }, []);
+
   useEffect(() => {
     const initialCalendar = getCalendar(year, month);
     onClickUpdateCalendar(initialCalendar);
     document.addEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [handleClickOutside, month, year]);
 
   const handleInputClick = (): void => onClickUpdateCalendarVisibility(true);
 
@@ -80,21 +95,6 @@ const DatePicker = ({
 
     if (!regexDate.test(formattedDate) && regexDateFormat.test(formattedDate)) {
       setErrorMessage(UNVALID_FORMAT_DATE);
-    }
-  };
-
-  const handleClickOutside = (event: MouseEvent): void => {
-    if (!inputRef.current || !calendarRef.current) {
-      return;
-    }
-
-    const isFocusOutsideDatePicker =
-      !inputRef.current.contains(event.target as Node) &&
-      !calendarRef.current.contains(event.target as Node);
-
-    if (isFocusOutsideDatePicker) {
-      onClickUpdateErrorMessage("");
-      onClickUpdateCalendarVisibility(false);
     }
   };
 

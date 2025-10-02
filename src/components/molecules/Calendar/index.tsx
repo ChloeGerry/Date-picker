@@ -69,7 +69,7 @@ const Calendar = ({
       onClickUpdateDropdownDisplay: onClickOpenDropdownId,
       isDropdownOpen: openDropdownId,
     }),
-    [month, year, onClickUpdateCalendar, openDropdownId]
+    [month, year, onClickUpdateCalendar, openDropdownId, onClickUpdateMonth, onClickUpdateYear]
   );
 
   const yearsDropdownProps = useMemo(() => {
@@ -87,7 +87,7 @@ const Calendar = ({
       onClickUpdateDropdownDisplay: onClickOpenDropdownId,
       isDropdownOpen: openDropdownId,
     };
-  }, [month, year, onClickUpdateCalendar, openDropdownId]);
+  }, [month, year, onClickUpdateCalendar, openDropdownId, onClickUpdateMonth, onClickUpdateYear]);
 
   const getPreviousOrLastMonth = (isPreviousMonth: boolean): void => {
     const params: getUpdatedCalendarType = {
@@ -171,6 +171,7 @@ const Calendar = ({
     });
 
     if (!dateValidity) {
+      onClickUpdateCalendarVisibility(false);
       onClickUpdateErrorMessage(NOT_MATCHING_DATE);
     } else {
       onClickUpdateCalendarVisibility(false);
@@ -188,6 +189,10 @@ const Calendar = ({
       handleChoosenDate(day, isPreviousMonth, isNextMonth);
     }
   };
+
+  if (!monthsDropdownProps || !yearsDropdownProps) {
+    return;
+  }
 
   return (
     <div
@@ -220,6 +225,7 @@ const Calendar = ({
                 onClickUpdateCalendar,
               };
 
+              onClickUpdateSelectedDay(currentDate);
               onClickUpdateChoosenDate("");
               return returnToToday(params);
             }}
