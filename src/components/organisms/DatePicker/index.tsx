@@ -24,6 +24,7 @@ const DatePicker = ({
   id,
   containerClassName,
   calendarClassName,
+  ...props
 }: DatePickerProps) => {
   const initialMonth = dayjs().month();
   const initialYear = dayjs().year();
@@ -157,6 +158,7 @@ const DatePicker = ({
         value={choosenDate}
         hasErrorMessage={errorMessage}
         onKeyDown={(event) => handleKeyboardCalendarVisibility(event)}
+        {...props}
       />
       {errorMessage && <p className="py-2 text-red-700">{errorMessage}</p>}
       {isCalendarVisible && <Calendar {...calendarProps} />}
