@@ -14,6 +14,8 @@ type DatePickerProps = {
   minimumDate?: string;
   maximumDate?: string;
   id?: string;
+  value: string;
+  onChange: (date: string) => void;
   containerClassName?: string;
   calendarClassName?: string;
 };
@@ -22,6 +24,8 @@ const DatePicker = ({
   minimumDate = "01/01/1950",
   maximumDate = "12/31/2050",
   id,
+  value,
+  onChange,
   containerClassName,
   calendarClassName,
   ...props
