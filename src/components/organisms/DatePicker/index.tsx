@@ -14,8 +14,8 @@ type DatePickerProps = {
   minimumDate?: string;
   maximumDate?: string;
   id?: string;
-  value: string;
-  onChange: (date: string) => void;
+  value?: string;
+  onChange?: (date: string) => void;
   containerClassName?: string;
   calendarClassName?: string;
 };
@@ -24,7 +24,7 @@ const DatePicker = ({
   minimumDate = "01/01/1950",
   maximumDate = "12/31/2050",
   id,
-  value,
+  value = "",
   onChange,
   containerClassName,
   calendarClassName,
@@ -46,7 +46,9 @@ const DatePicker = ({
   const calendarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    setChoosenDate(value || "");
+    if (value !== choosenDate) {
+      setChoosenDate(value || "");
+    }
   }, [value]);
 
   const handleClickOutside = useCallback((event: MouseEvent): void => {
@@ -81,7 +83,7 @@ const DatePicker = ({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const formattedDate = event.target.value;
     setChoosenDate(event.target.value);
-    onChange(formattedDate);
+    onChange?.(formattedDate);
 
     if (regexDate.test(formattedDate)) {
       const datesParams = { minimumDate, maximumDate, formattedDate };
@@ -114,7 +116,7 @@ const DatePicker = ({
 
   const onClickUpdateChoosenDate = (date: string): void => {
     setChoosenDate(date);
-    onChange(date);
+    onChange?.(date);
   };
 
   const onClickUpdateErrorMessage = (message: string): void => {
