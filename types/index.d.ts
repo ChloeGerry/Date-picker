@@ -5,6 +5,7 @@ declare module "tailwind-date-picker" {
     minimumDate?: string;
     maximumDate?: string;
     id?: string;
+    value: string;
     onChange: (date: string) => void;
     containerClassName?: string;
     containerClassName?: string;

@@ -45,6 +45,10 @@ const DatePicker = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    setChoosenDate(value || "");
+  }, [value]);
+
   const handleClickOutside = useCallback((event: MouseEvent): void => {
     if (!inputRef.current || !calendarRef.current) {
       return;
