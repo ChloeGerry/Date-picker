@@ -77,6 +77,7 @@ const DatePicker = ({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const formattedDate = event.target.value;
     setChoosenDate(event.target.value);
+    onChange(formattedDate);
 
     if (regexDate.test(formattedDate)) {
       const datesParams = { minimumDate, maximumDate, formattedDate };
@@ -109,6 +110,7 @@ const DatePicker = ({
 
   const onClickUpdateChoosenDate = (date: string): void => {
     setChoosenDate(date);
+    onChange(date);
   };
 
   const onClickUpdateErrorMessage = (message: string): void => {
