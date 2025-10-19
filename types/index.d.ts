@@ -8,7 +8,6 @@ declare module "tailwind-date-picker" {
     value: string;
     onChange: (date: string) => void;
     containerClassName?: string;
-    containerClassName?: string;
     calendarClassName?: string;
   };
 
