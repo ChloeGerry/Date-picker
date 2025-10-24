@@ -1,7 +1,19 @@
 {
   "name": "tailwind-date-picker",
+  "author": "Chloé Gerry",
+  "keywords": [
+    "react",
+    "react-component",
+    "datepicker",
+    "date-picker",
+    "calendar",
+    "typescript",
+    "ts",
+    "tailwind",
+    "tailwindcss"
+  ],
   "private": false,
-  "version": "0.1.6",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "main": "./dist/tailwind-date-picker.cjs.js",

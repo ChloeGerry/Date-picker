@@ -1,9 +1,5 @@
 # Date Picker
 
-Versions used :
-
----
-
 ## Versions used
 
 - **Node**: 22.12.0
@@ -18,12 +14,6 @@ Versions used :
 npm install tailwind-date-picker
 # or
 yarn add tailwind-date-picker
-```
-
-Installation :
-
-```shell
-npm i tailwind-date-picker ou yarn add tailwind-date-picker
 ```
 
 Classic use :
