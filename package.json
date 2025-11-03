@@ -1,6 +1,10 @@
 {
   "name": "tailwind-date-picker",
   "author": "Chloé Gerry",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChloeGerry/Date-picker/tree/package-deployment"
+  },
   "keywords": [
     "react",
     "react-component",
