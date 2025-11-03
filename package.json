@@ -5,6 +5,7 @@
     "type": "git",
     "url": "https://github.com/ChloeGerry/Date-picker/tree/package-deployment"
   },
+  "homepage": "https://github.com/ChloeGerry/Date-picker/tree/package-deployment#readme",
   "keywords": [
     "react",
     "react-component",
@@ -17,7 +18,7 @@
     "tailwindcss"
   ],
   "private": false,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "type": "module",
   "main": "./dist/tailwind-date-picker.cjs.js",
