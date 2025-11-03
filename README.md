@@ -11,9 +11,9 @@
 ## Installation
 
 ```bash
-npm install tailwind-date-picker
+npm install @ayunn/tailwind-date-picker
 # or
-yarn add tailwind-date-picker
+yarn add @ayunn/tailwind-date-picker
 ```
 
 Classic use :
