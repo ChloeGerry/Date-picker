@@ -1,5 +1,5 @@
 {
-  "name": "@ayunn/tailwind-date-picker",
+  "name": "tailwind-date-picker",
   "author": "Chloé Gerry",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "tailwindcss"
   ],
   "private": false,
-  "version": "0.0.2",
+  "version": "3.0.0",
   "license": "MIT",
   "type": "module",
   "main": "./dist/tailwind-date-picker.cjs.js",
