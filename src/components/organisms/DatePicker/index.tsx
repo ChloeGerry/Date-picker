@@ -13,9 +13,6 @@ import { UNVALID_FORMAT_DATE } from "@/utils/constants";
 type DatePickerProps = {
   minimumDate?: string;
   maximumDate?: string;
-  id?: string;
-  value: string;
-  onChange: (date: string) => void;
   containerClassName?: string;
   calendarClassName?: string;
 };
@@ -23,9 +20,6 @@ type DatePickerProps = {
 const DatePicker = ({
   minimumDate = "01/01/1950",
   maximumDate = "12/31/2050",
-  id,
-  value,
-  onChange,
   containerClassName,
   calendarClassName,
   ...props
@@ -78,6 +72,8 @@ const DatePicker = ({
     const formattedDate = event.target.value;
     setChoosenDate(event.target.value);
 
+    let updatedErrorMessage = "";
+
     if (regexDate.test(formattedDate)) {
       const datesParams = { minimumDate, maximumDate, formattedDate };
       displayErrorIfDateIsntBetweenMinimumAndMaximum({ datesParams, onClickUpdateErrorMessage });
@@ -99,8 +95,11 @@ const DatePicker = ({
     }
 
     if (!regexDate.test(formattedDate) && regexDateFormat.test(formattedDate)) {
-      setErrorMessage(UNVALID_FORMAT_DATE);
+      updatedErrorMessage = UNVALID_FORMAT_DATE;
     }
+
+    setErrorMessage(updatedErrorMessage);
+    setIsCalendarVisible(false);
   };
 
   const onClickUpdateCalendar = (calendar: CalendarType[]): void => {
@@ -154,7 +153,6 @@ const DatePicker = ({
   return (
     <div className={twMerge("flex flex-col", containerClassName)}>
       <Input
-        id={id}
         ref={inputRef}
         placeholder="MM/DD/YYYY"
         onClick={() => handleInputClick()}
